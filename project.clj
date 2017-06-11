@@ -1,4 +1,4 @@
-(defproject jurl "0.1.0-SNAPSHOT"
+(defproject jurl "0.1.0"
   :description "Cross-platform URL parsing / manipulation"
   :url "https://github.com/chbrown/jurl-clojure"
   :license {:name "Eclipse Public License"

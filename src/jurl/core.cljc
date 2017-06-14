@@ -98,7 +98,7 @@
   {:test (fn []
            (assert (= nil (map->search nil)))
            (assert (= "?" (map->search {})))
-           (assert (= "?a=1&b=2" (map->search {"a" ["1"] "b" ["2"]})))
+           (assert (= "?a=1&b=2" (map->search {"a" ["1"] "b" ["2"] "c" []})))
            (assert (= "?a=1&a=2" (map->search {"a" ["1" "2"]}))))}
   [m]
   (some->> m ungroup (map #(map encode %)) seq->search))

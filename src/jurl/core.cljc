@@ -50,7 +50,7 @@
     (->> (str/split (subs search 1) #"&")
          ; (str/split "" #"&") returns [""], but we would prefer []
          (remove empty?)
-         (map #(str/split % #"=" 2)))))
+         (map #(map decode (str/split % #"=" 2))))))
 
 (defn- update-conj
   "Add v to the (maybe empty) vector at (get m k)"
@@ -101,4 +101,4 @@
            (assert (= "?a=1&b=2" (map->search {"a" ["1"] "b" ["2"]})))
            (assert (= "?a=1&a=2" (map->search {"a" ["1" "2"]}))))}
   [m]
-  (some->> m ungroup seq->search))
+  (some->> m ungroup (map #(map encode %)) seq->search))

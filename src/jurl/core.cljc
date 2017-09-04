@@ -5,7 +5,7 @@
 
 ;; URL encoding/decoding
 
-(defn encode
+(defn ^:export encode
   "URL-encode `string`; other implementations sometimes convert '+' to '%20',
   but this method does not. Uses UTF-8 as the encoding if applicable."
   [string]
@@ -13,7 +13,7 @@
       #?(:clj  (java.net.URLEncoder/encode "UTF-8")
          :cljs (js/encodeURIComponent))))
 
-(defn decode
+(defn ^:export decode
   "URL-decode `string`. Uses UTF-8 as the encoding if applicable."
   [string]
   (-> (str string)
@@ -22,7 +22,7 @@
 
 ;; Deserialization
 
-(defn search->seq
+(defn ^:export search->seq
   "Convert a query string, like that returned by window.location.search,
   to a seq of key-value tuples.
 
@@ -48,14 +48,14 @@
   ; but this way the order of the vector matches the order of the values
   (assoc m k (conj (get m k []) v)))
 
-(defn search->map
+(defn ^:export search->map
   "Run search->seq then converts to a map with string keys and vector values"
   [search]
   (reduce update-conj {} (search->seq search)))
 
 ;; Serialization
 
-(defn seq->search
+(defn ^:export seq->search
   "Serialize a seq of key-value tuples back into a string"
   [kvs]
   (some->> kvs
@@ -68,7 +68,7 @@
   [m]
   (for [[k vs] m v vs] [k v]))
 
-(defn map->search
+(defn ^:export map->search
   "Serialize a map of name-vector tuples back into a string"
   [m]
   (some->> m ungroup (map #(map encode %)) seq->search))

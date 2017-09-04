@@ -7,7 +7,12 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.908"]]
   :plugins [[lein-cljsbuild "1.1.7"]]
-  :cljsbuild {:builds [{:id "test"
+  :cljsbuild {:builds [{:id "production"
+                        :source-paths ["src"]
+                        :compiler {:output-dir "target"
+                                   :output-to "target/main.js"
+                                   :optimizations :advanced}}
+                       {:id "test"
                         :source-paths ["src" "test"]
                         :compiler {:output-dir "target/test"
                                    :output-to "target/test/main.js"

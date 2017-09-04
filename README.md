@@ -6,7 +6,7 @@
 
 Cross-platform URL parsing and manipulation.
 
-Uses reader conditionals to support Clojure and ClojureScript, and thus requires Clojure 1.7.0 or newer (`[org.clojure/clojure "1.7.0"]`).
+Uses reader conditionals to support Clojure and ClojureScript, and thus requires Clojure 1.7.0 or newer.
 
 
 ## Example

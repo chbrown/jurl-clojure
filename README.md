@@ -1,8 +1,8 @@
 ## jurl
 
+[![Clojars Project](https://img.shields.io/clojars/v/jurl.svg)](https://clojars.org/jurl)
 [![Travis CI Build Status](https://travis-ci.org/chbrown/jurl-clojure.svg?branch=master)](https://travis-ci.org/chbrown/jurl-clojure)
 [![Coverage Status](https://coveralls.io/repos/github/chbrown/jurl-clojure/badge.svg?branch=master)](https://coveralls.io/github/chbrown/jurl-clojure?branch=master)
-[![Clojars Project](https://img.shields.io/clojars/v/jurl.svg)](https://clojars.org/jurl)
 
 Cross-platform URL parsing and manipulation.
 

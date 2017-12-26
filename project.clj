@@ -18,6 +18,6 @@
                                    :output-to "target/test/main.js"
                                    :main jurl.runner
                                    :optimizations :whitespace}}]}
-  :profiles {:test {:doo {:paths {:rhino "lein run -m org.mozilla.javascript.tools.shell.Main"}}
-                    :plugins [[lein-doo "0.1.8"]
-                              [lein-cloverage "1.0.9"]]}})
+  :profiles {:dev {:doo {:paths {:rhino "lein run -m org.mozilla.javascript.tools.shell.Main"}}
+                   :plugins [[lein-doo "0.1.8"]
+                             [lein-cloverage "1.0.10"]]}})

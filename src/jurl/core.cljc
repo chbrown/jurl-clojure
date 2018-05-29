@@ -66,9 +66,12 @@
 (defn- ungroup
   "Unpack (flatten) the (k, values) pairs in `m` into a seq of (k, value) pairs"
   [m]
-  (for [[k vs] m v vs] [k v]))
+  (for [[k vs] m
+        v vs]
+    [k v]))
 
 (defn ^:export map->search
-  "Serialize a map of name-vector tuples back into a string"
+  "Serialize a map of name-vector tuples back into a string
+  (prefixed with '?' if non-empty)"
   [m]
   (some->> m ungroup (map #(map encode %)) seq->search))

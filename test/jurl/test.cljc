@@ -1,5 +1,5 @@
 (ns jurl.test
-  (:require [clojure.test #?(:clj :refer :cljs :refer-macros) [deftest is]]
+  (:require [clojure.test :refer [deftest is]]
             [jurl.core :refer [encode decode search->seq search->map seq->search map->search]]))
 
 (deftest test-encode

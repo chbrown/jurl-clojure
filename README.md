@@ -1,6 +1,7 @@
 ## jurl
 
 [![Clojars Project](https://img.shields.io/clojars/v/jurl.svg)](https://clojars.org/jurl)
+[![Codox-generated documentation for master](https://img.shields.io/badge/docs-master-blue.svg)](https://chbrown.github.io/jurl-clojure/master/)
 [![Travis CI Build Status](https://travis-ci.org/chbrown/jurl-clojure.svg?branch=master)](https://travis-ci.org/chbrown/jurl-clojure)
 [![Coverage Status](https://coveralls.io/repos/github/chbrown/jurl-clojure/badge.svg?branch=master)](https://coveralls.io/github/chbrown/jurl-clojure?branch=master)
 

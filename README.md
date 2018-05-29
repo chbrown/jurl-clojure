@@ -39,4 +39,5 @@ Querystring parsing (use with `js/window.location.search` in ClojureScript):
 
 ## License
 
-Copyright © 2017 Christopher Brown. [Eclipse Public License - v 1.0](https://www.eclipse.org/legal/epl-v10.html).
+Copyright © 2017–2018 Christopher Brown.
+[Eclipse Public License - v 1.0](https://www.eclipse.org/legal/epl-v10.html).

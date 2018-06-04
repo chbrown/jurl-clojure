@@ -49,9 +49,13 @@
   (assoc m k (conj (get m k []) v)))
 
 (defn ^:export search->map
-  "Run search->seq then converts to a map with string keys and vector values"
-  [search]
-  (reduce update-conj {} (search->seq search)))
+  "Run search->seq then convert to a map with string keys and vector values"
+  ([search]
+   (search->map search nil))
+  ([search {re :split}]
+   (reduce update-conj {} (cond->> (search->seq search)
+                            ; when {:split re} is supplied, produce a [k v] pair for each split substring of v
+                            re (mapcat (fn [[k v]] (map vector (repeat k) (str/split v re))))))))
 
 ;; Serialization
 
@@ -63,15 +67,29 @@
            (str/join "&")
            (str "?")))
 
+(defn- map-values
+  "Construct a new map with all the values of the given map passed through f"
+  [f kvs]
+  (into (empty kvs) (for [[k v] kvs] [k (f v)])))
+
 (defn- ungroup
-  "Unpack (flatten) the (k, values) pairs in `m` into a seq of (k, value) pairs"
-  [m]
-  (for [[k vs] m
-        v vs]
-    [k v]))
+  "Unpack (flatten) the (k, values) pairs in the map `m` into a seq of (k, value) pairs.
+  If `separator` is provided, return one pair for each [k values] pair,
+  joining all values into a single string (in a 1-element vector)."
+  ([m]
+   (ungroup nil m))
+  ([separator m]
+   (if separator
+     (for [[k vs] m]
+       [k (str/join separator vs)])
+     (for [[k vs] m
+           v vs]
+       [k v]))))
 
 (defn ^:export map->search
   "Serialize a map of name-vector tuples back into a string
   (prefixed with '?' if non-empty)"
-  [m]
-  (some->> m ungroup (map #(map encode %)) seq->search))
+  ([m]
+   (map->search m nil))
+  ([m {:keys [separator]}]
+   (some->> m (map-values #(map encode %)) (ungroup separator) seq->search)))

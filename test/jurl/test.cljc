@@ -31,7 +31,8 @@
        {}                    (search->map "")
        {}                    (search->map "?")
        {"a" ["1"] "b" ["2"]} (search->map "?a=1&b=2")
-       {"a" ["1" "2"]}       (search->map "?a=1&a=2")))
+       {"a" ["1" "2"]}       (search->map "?a=1&a=2")
+       {"a" ["1" "2"]}       (search->map "?a=1,2" {:split #","})))
 
 (deftest test-seq->search
   (are [expected actual] (= expected actual)
@@ -45,4 +46,5 @@
        nil        (map->search nil)
        "?"        (map->search {})
        "?a=1&b=2" (map->search {"a" ["1"] "b" ["2"] "c" []})
-       "?a=1&a=2" (map->search {"a" ["1" "2"]})))
+       "?a=1&a=2" (map->search {"a" ["1" "2"]})
+       "?a=1,2"   (map->search {"a" ["1" "2"]} {:separator ","})))

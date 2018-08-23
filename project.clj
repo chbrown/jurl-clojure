@@ -7,8 +7,6 @@
                               [:name "Christopher Brown"]
                               [:email "io@henrian.com"]]]
   :deploy-repositories [["releases" :clojars]]
-  :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.9.946"]]
   :plugins [[lein-cljsbuild "1.1.7"]]
   :cljsbuild {:builds [{:id "production"
                         :source-paths ["src"]
@@ -21,6 +19,8 @@
                                    :output-to "target/test/main.js"
                                    :main jurl.runner
                                    :optimizations :whitespace}}]}
-  :profiles {:test {:doo {:paths {:rhino "lein run -m org.mozilla.javascript.tools.shell.Main"}}
+  :profiles {:dev  {:dependencies [[org.clojure/clojure "1.8.0"]
+                                   [org.clojure/clojurescript "1.9.946"]]}
+             :test {:doo {:paths {:rhino "lein run -m org.mozilla.javascript.tools.shell.Main"}}
                     :plugins [[lein-doo "0.1.8"]
                               [lein-cloverage "1.0.10"]]}})

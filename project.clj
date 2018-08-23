@@ -22,5 +22,5 @@
   :profiles {:dev  {:dependencies [[org.clojure/clojure "1.8.0"]
                                    [org.clojure/clojurescript "1.9.946"]]}
              :test {:doo {:paths {:rhino "lein run -m org.mozilla.javascript.tools.shell.Main"}}
-                    :plugins [[lein-doo "0.1.8"]
-                              [lein-cloverage "1.0.10"]]}})
+                    :plugins [[lein-doo "0.1.10"]
+                              [lein-cloverage "1.0.13"]]}})

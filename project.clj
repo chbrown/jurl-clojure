@@ -19,8 +19,8 @@
                                    :output-to "target/test/main.js"
                                    :main jurl.runner
                                    :optimizations :whitespace}}]}
-  :profiles {:dev  {:dependencies [[org.clojure/clojure "1.8.0"]
-                                   [org.clojure/clojurescript "1.9.946"]]}
+  :profiles {:dev  {:dependencies [[org.clojure/clojure "1.9.0"]
+                                   [org.clojure/clojurescript "1.10.339"]]}
              :test {:doo {:paths {:rhino "lein run -m org.mozilla.javascript.tools.shell.Main"}}
                     :plugins [[lein-doo "0.1.10"]
                               [lein-cloverage "1.0.13"]]}})
